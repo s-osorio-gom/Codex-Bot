@@ -1,0 +1,18 @@
+Ejercicio 2.3 - Conclusión ejecutiva
+
+Resultado final:
+- Claude Sonnet 4.6: 96.29/100
+- Gemini (Fast): 82.91/100
+
+Interpretación:
+El modelo mejor evaluado fue Claude Sonnet 4.6. Su ventaja proviene principalmente de una mayor precisión conceptual,
+mayor profundidad analítica, una estructura expositiva más sólida y un tono más cercano al estándar de
+comunicación profesional esperado en análisis económico-financiero.
+
+Lectura comparativa:
+- Gemini presenta una respuesta útil, clara y con evidencia visual complementaria.
+- Sin embargo, su formulación es más conversacional, algo más general y requiere mayor edición para uso directo en un contexto analítico formal.
+- Claude ofrece una respuesta más técnica, con mejor tratamiento de duración modificada, DCF, heterogeneidad sectorial y cuadro comparativo final.
+
+Criterio de elección:
+Bajo la metodología definida, escogería Claude Sonnet 4.6 para esta tarea específica.

@@ -1,0 +1,3 @@
+method,description,pros,cons
+Instant bank verification,Conexión autenticada para recuperar y verificar routing/account/token + eventualmente ownership/balance.,Menos errores manuales y menor fricción.,Depende de cobertura del proveedor.
+Micro-deposits,Pequeño depósito(s) que el cliente confirma para probar control de la cuenta.,Funciona como fallback cuando no hay instant auth.,Más lento: puede tomar 1-2 días hábiles o más según el flujo.

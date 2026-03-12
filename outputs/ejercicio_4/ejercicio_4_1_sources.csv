@@ -1,0 +1,31 @@
+topic,source_label,url
+Insights overview,Insights homepage,https://www.insightswm.com/
+Insights help center / what is Insights,Insights help center,https://www.insightswm.com/help-center
+Insights ACH deposit timing,Insights help article - no veo abonado,https://help.insightswm.com/hc/es-419/articles/10572148616091-No-veo-abonado-el-dinero-en-mi-cuenta-de-inversi%C3%B3n-de-Insights
+Insights ACH withdrawal timing,Insights help article - retiros,https://help.insightswm.com/hc/es-419/articles/9068243168283--C%C3%B3mo-realizar-un-retiro-en-Insights
+ACH flow,Nacha - How ACH Payments Work,https://www.nacha.org/content/how-ach-payments-work
+ACH speed and facts,Nacha - ACH Payments Fact Sheet,https://www.nacha.org/content/ach-payments-fact-sheet
+Same-Day ACH windows,Federal Reserve - FedACH Processing Schedule,https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html
+Same-Day ACH eligibility,Federal Reserve - FedACH SameDay Service,https://www.frbservices.org/financial-services/ach/same-day-service.html
+Same-Day ACH limit,Nacha - $1M limit,https://www.nacha.org/million
+ABA routing structure,ABA Routing Number,https://www.aba.com/about-us/routing-number
+ABA routing structure detail,ABA Routing Number Policy,https://www.aba.com/news-research/analysis-guides/routing-number-policy-procedures
+Instant verification / balances / ownership,Stripe Financial Connections,https://stripe.com/us/financial-connections
+ACH direct debit with verification,Stripe docs,https://docs.stripe.com/financial-connections/ach-direct-debit-payments
+Same-day micro-deposits,Plaid docs,https://plaid.com/docs/auth/coverage/same-day/
+Automated micro-deposits,Plaid docs automated,https://plaid.com/docs/auth/coverage/automated/
+ACH return codes,PayJunction return codes,https://support.payjunction.com/hc/en-us/articles/218502067-ACH-Return-Codes-and-Definitions
+ACH return codes alternative,AndDone return codes,https://help.anddone.com/ach-return-codes-explained
+BoA routing,Bank of America routing FAQ,https://www.bankofamerica.com/deposits/routing-number-faqs/
+Chase routing,Bankrate state list citing Chase,https://www.bankrate.com/banking/checking/what-is-a-routing-number/
+Wells routing,Wells Fargo routing page,https://www.wellsfargo.com/help/routing-number/
+Santander routing,Santander routing page,https://www.santanderbank.com/personal/banking/checking-resources/routing-number
+TD routing,TD direct deposit page,https://www.td.com/us/en/personal-banking/direct-deposit
+U.S. Bank routing,U.S. Bank routing directory,https://www.usbank.com/es/bank-accounts/checking-accounts/checking-customer-resources/aba-routing-number.html
+Regions routing,Regions switch kit,https://www.regions.com/virtualdocuments/Business_SwitchKit_Forms.pdf
+Citibank routing,Citibank public routing guide,https://www.getnickel.com/bank-routing-numbers/citibank
+Capital One routing,Capital One help center,https://www.capitalone.com/help-center/checking-savings/routing-account-numbers/
+Capital One routing reference,Capital One 360 public routing reference,https://www.hustlermoneyblog.com/capital-one-360-money-market-review/
+Truist routing,Truist public routing guide,https://www.getnickel.com/bank-routing-numbers/truist
+Wire reversibility,OCC / HelpWithMyBank,https://www2.helpwithmybank.gov/help-topics/fraud-scams/scams/wire-transfer-scams/wire-transfer-scams-held-liable.html
+Funding limits example,Robinhood transfer limits,https://robinhood.com/us/en/support/articles/spending-limits/

@@ -1,0 +1,14 @@
+Ejercicio 2.1 - Retorno esperado y volatilidad esperada
+
+Resultados:
+- P1: retorno esperado = 9.1191% | volatilidad esperada = 20.6253%
+- P2: retorno esperado = 5.8419% | volatilidad esperada = 10.1071%
+
+Lectura economica:
+- P1 ofrece el mayor retorno esperado, pero tambien el mayor nivel de riesgo.
+- P2 ofrece un menor retorno esperado, pero con una volatilidad significativamente menor.
+- En terminos de retorno por unidad de volatilidad, P2 presenta la mejor relacion riesgo-retorno.
+
+Conclusion:
+- Para un perfil moderado o conservador, P2 luce mas defendible.
+- Para un perfil agresivo, P1 puede ser adecuado si el objetivo principal es maximizar retorno esperado y existe tolerancia a una volatilidad anual cercana a 20.6%.

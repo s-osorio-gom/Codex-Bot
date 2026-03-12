@@ -1,0 +1,11 @@
+bank,state_or_region,routing_number,coverage_note,source_label
+Bank of America,Texas,111000025,Seed lookup para el prototipo.,Bank of America routing FAQ
+Chase,Texas,111000614,Seed lookup para el prototipo.,Chase state list (publicly reported from Chase source)
+Wells Fargo,California,121000248,La página oficial indica que en Southern California puede verse otro número válido en cheques.,Wells Fargo routing page
+Citibank,Texas,113193532,Seed lookup para el prototipo.,Public routing directory / Citibank Texas listing
+Santander,NJ / NY / PA / DE / MD,231372691,Ruta pública por grupo de estados.,Santander routing page
+TD Bank,Florida,067014822,Ruta pública por estado.,TD direct deposit page
+U.S. Bank,California - North,121122676,Seed lookup para el prototipo.,U.S. Bank routing directory
+Regions,Texas,111900785,Tomado de material público de switch-kit; conviene confirmación en app/check.,Regions switch kit
+Capital One 360,Nationwide / online,031176110,Útil como caso de banco online con ruta única en el prototipo.,Capital One 360 public routing references
+Truist,General / new accounts,061000104,Algunas cuentas heredadas de BB&T pueden seguir usando rutas legacy.,Public Truist routing guide

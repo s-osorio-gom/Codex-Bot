@@ -1,0 +1,11 @@
+item,required_for,what_bot_should_do
+Bank name,Identificar institución y preparar el lookup del routing.,Preguntar primero por banco.
+State,Elegir routing correcto cuando el banco usa rutas por estado/región.,Preguntar estado antes de dar instrucciones.
+ABA routing number,Enrutar correctamente la instrucción ACH.,Inferirlo desde banco+estado y pedir confirmación cuando corresponda.
+Bank account number,Identificar la cuenta origen del ACH pull.,Solicitarlo después de explicar el proceso.
+Account type,Determinar checking vs savings.,Pedirlo explícitamente.
+Legal name on bank account,Validación de titularidad/ownership.,Confirmar que coincide con la cuenta del cliente en Insights.
+Authorization / consent,Cumplimiento operativo y de Nacha para débito ACH.,Cerrar el flujo con una confirmación explícita.
+Verification method,Confirmar ownership y reducir fraude/errores.,Explicar que puede hacerse por instant auth o micro-deposits.
+Funding limits,Evitar expectativas erróneas sobre montos.,Explicar que los límites dependen del proveedor/riesgo; usar límites mock/documentados en el prototipo.
+Funds availability timing,Gestionar expectativa del cliente.,Informar que la acreditación no es necesariamente inmediata.

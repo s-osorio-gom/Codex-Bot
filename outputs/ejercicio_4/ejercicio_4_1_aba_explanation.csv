@@ -1,0 +1,5 @@
+topic,summary
+Qué es,Un ABA routing number es un identificador de 9 dígitos para enrutar pagos en EE.UU.
+Estructura,"Se compone de Federal Reserve Routing Symbol, ABA Institution Identifier y Check Digit."
+Por qué cambia por estado,"Bancos grandes pueden usar rutas diferentes por estado/región, por banco heredado o por cómo/ dónde se abrió la cuenta."
+Regla para el agente,"Preguntar banco + estado primero; luego hacer lookup; si hay ambigüedad, pedir confirmación contra cheque o app bancaria."

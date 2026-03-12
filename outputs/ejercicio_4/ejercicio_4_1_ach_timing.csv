@@ -1,0 +1,3 @@
+mode,network_timing,when_to_recommend,insights_fit
+ACH estándar,"La mayoría de pagos ACH liquida en 1 día bancario o menos; créditos pueden programarse same-day, next-day o en 2 días bancarios según reglas.","Opción base para fondeo regular, cuando el cliente no necesita urgencia intradía.",Consistente con la expectativa pública de 1-5 días hábiles comunicada por Insights.
+Same-Day ACH,"Ventanas con liquidación aproximada a 1:00 p.m., 5:00 p.m. y 6:00 p.m. ET; límite actual de USD 1 millón por pago elegible.","Solo si el cliente necesita fondeo el mismo día hábil, el monto es elegible y el partner bancario soporta el flujo.","Debe tratarse como camino opcional, no como promesa base del bot."

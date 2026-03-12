@@ -1,0 +1,13 @@
+Ejercicio 2.2 - Computo numerico
+
+Resultados:
+- P1: retorno esperado = 9.1191% | volatilidad esperada = 20.6253%
+- P2: retorno esperado = 5.8419% | volatilidad esperada = 10.1071%
+
+Lectura:
+- P1 ofrece un mayor retorno esperado, pero con una volatilidad considerablemente mayor.
+- P2 ofrece un menor retorno esperado, pero con una volatilidad sustancialmente mas baja.
+
+Conclusion:
+- P1 corresponde a un perfil mas agresivo.
+- P2 corresponde a un perfil mas conservador o moderado.

@@ -1,0 +1,124 @@
+{
+  "scenario": "success",
+  "current_state": "end",
+  "bank": "Bank of America",
+  "state_name": "Texas",
+  "routing_number": "111000025",
+  "routing_match_note": "Coincidencia encontrada en seed lookup por banco y estado/región.",
+  "account_type": "checking",
+  "account_holder_name": "Santiago Osorio Gomez",
+  "account_number": "123456789",
+  "amount": 2500.0,
+  "outcome_code": null,
+  "outcome_message": "Tu solicitud ACH fue creada correctamente por USD 2500.00. La referencia quedó en estado submitted y el fondeo puede reflejarse en 1 a 5 días hábiles.",
+  "history": [
+    {
+      "speaker": "bot",
+      "message": "Hola. Soy el prototipo ACH Funding Bot de Insights. Te voy a ayudar a preparar un fondeo ACH de forma simple y paso a paso.",
+      "timestamp_utc": "2026-03-12T22:26:28.069415+00:00",
+      "state": "ask_bank"
+    },
+    {
+      "speaker": "bot",
+      "message": "Primero, ¿cuál es tu banco?",
+      "timestamp_utc": "2026-03-12T22:26:28.069726+00:00",
+      "state": "ask_bank"
+    },
+    {
+      "speaker": "user",
+      "message": "Bank of America",
+      "timestamp_utc": "2026-03-12T22:26:40.693118+00:00",
+      "state": "ask_bank"
+    },
+    {
+      "speaker": "bot",
+      "message": "¿En qué estado abriste esa cuenta bancaria?",
+      "timestamp_utc": "2026-03-12T22:26:40.693258+00:00",
+      "state": "ask_state"
+    },
+    {
+      "speaker": "user",
+      "message": "Texas",
+      "timestamp_utc": "2026-03-12T22:26:45.007539+00:00",
+      "state": "ask_state"
+    },
+    {
+      "speaker": "bot",
+      "message": "Encontré un routing sugerido: 111000025. Coincidencia encontrada en seed lookup por banco y estado/región.",
+      "timestamp_utc": "2026-03-12T22:26:45.009899+00:00",
+      "state": "lookup_routing"
+    },
+    {
+      "speaker": "bot",
+      "message": "Perfecto. Para Bank of America en Texas, el routing sugerido en el lookup seed es 111000025.\nEl proceso ACH funciona así: recopilamos tus datos bancarios, confirmamos la información, originamos la instrucción y el banco receptor puede aceptar o retornar la operación. En general, el fondeo ACH no es instantáneo y puede reflejarse en un rango de 1 a 5 días hábiles.",
+      "timestamp_utc": "2026-03-12T22:26:45.009944+00:00",
+      "state": "explain_ach"
+    },
+    {
+      "speaker": "bot",
+      "message": "¿Tu cuenta es checking o savings?",
+      "timestamp_utc": "2026-03-12T22:26:45.009963+00:00",
+      "state": "ask_account_type"
+    },
+    {
+      "speaker": "user",
+      "message": "checking",
+      "timestamp_utc": "2026-03-12T22:26:54.102491+00:00",
+      "state": "ask_account_type"
+    },
+    {
+      "speaker": "bot",
+      "message": "¿Cuál es el nombre legal del titular de la cuenta bancaria?",
+      "timestamp_utc": "2026-03-12T22:26:54.102673+00:00",
+      "state": "ask_account_holder"
+    },
+    {
+      "speaker": "user",
+      "message": "Santiago Osorio Gomez",
+      "timestamp_utc": "2026-03-12T22:27:01.412127+00:00",
+      "state": "ask_account_holder"
+    },
+    {
+      "speaker": "bot",
+      "message": "Ingresa el account number de la cuenta bancaria.",
+      "timestamp_utc": "2026-03-12T22:27:01.412302+00:00",
+      "state": "ask_account_number"
+    },
+    {
+      "speaker": "user",
+      "message": "123456789",
+      "timestamp_utc": "2026-03-12T22:27:07.056225+00:00",
+      "state": "ask_account_number"
+    },
+    {
+      "speaker": "bot",
+      "message": "¿Qué monto quieres fondear por ACH en USD?",
+      "timestamp_utc": "2026-03-12T22:27:07.056379+00:00",
+      "state": "ask_amount"
+    },
+    {
+      "speaker": "user",
+      "message": "2500",
+      "timestamp_utc": "2026-03-12T22:27:22.147209+00:00",
+      "state": "ask_amount"
+    },
+    {
+      "speaker": "bot",
+      "message": "Voy a confirmar los datos antes de enviar:\n- Banco: Bank of America\n- Estado: Texas\n- Routing sugerido: 111000025\n- Tipo de cuenta: checking\n- Titular: Santiago Osorio Gomez\n- Account number: ****6789\n- Monto: USD 2500.00\n¿Confirmas el envío? (si/no)",
+      "timestamp_utc": "2026-03-12T22:27:22.147440+00:00",
+      "state": "confirm"
+    },
+    {
+      "speaker": "user",
+      "message": "si",
+      "timestamp_utc": "2026-03-12T22:27:24.181469+00:00",
+      "state": "confirm"
+    },
+    {
+      "speaker": "bot",
+      "message": "Tu solicitud ACH fue creada correctamente por USD 2500.00. La referencia quedó en estado submitted y el fondeo puede reflejarse en 1 a 5 días hábiles.",
+      "timestamp_utc": "2026-03-12T22:27:24.181659+00:00",
+      "state": "submit"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+method,typical_limit,comment
+Same-Day ACH,"Hasta USD 1,000,000 por transacción elegible a nivel de red.",No implica que todas las plataformas ofrezcan ese límite al cliente final.
+Originated ACH (ejemplo broker/fintech),Límites definidos por proveedor y perfil de riesgo; ejemplo público: Robinhood muestra límites diarios mucho mayores para ACH que para tarjeta.,"En el prototipo conviene usar límites mock configurables, no asumir el límite real de Insights."
+Insights ACH availability,La ayuda pública de Insights no publica un límite ACH universal en el material consultado.,Sí publica ventana de disponibilidad de 1-5 días hábiles para ver reflejado el depósito.

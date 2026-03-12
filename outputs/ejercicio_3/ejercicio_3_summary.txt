@@ -1,0 +1,16 @@
+Ejercicio 3 - Caso de automatizacion
+
+Resultado final:
+- APPROVE: 51
+- HOLD: 49
+- REJECT: 28
+
+Criterio aplicado:
+- REJECT domina sobre HOLD
+- HOLD domina sobre APPROVE
+- Cuando una solicitud activa multiples reglas, se asigna el reason_code de mayor severidad
+
+Observaciones:
+- Los rechazos se explican principalmente por ACCOUNT_NOT_ACTIVE y KYC_NOT_VERIFIED.
+- Los casos HOLD se concentran en DUPLICATE_REQUEST, DEST_CHANGED_RECENTLY e INSUFFICIENT_SETTLED_AFTER_BUFFER.
+- El archivo de review contiene unicamente solicitudes HOLD y se encuentra ordenado por severidad descendente.

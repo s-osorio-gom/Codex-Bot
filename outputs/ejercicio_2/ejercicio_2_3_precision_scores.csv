@@ -1,0 +1,3 @@
+model,exactitud,grave_errors,unjustified_absolutes,penalty_note,precision_score
+Claude Sonnet 4.6,1.0,0,0,No se identifican errores graves ni absolutismos relevantes.,100.0
+Gemini (Fast),0.9,0,1,Se penaliza una formulación algo tajante sobre la volatilidad accionaria.,85.0

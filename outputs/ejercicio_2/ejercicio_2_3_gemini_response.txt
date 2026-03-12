@@ -1,0 +1,33 @@
+Una subida de tasas por parte de la Reserva Federal (Fed) es como cambiar la gravedad en el mundo financiero: todo se vuelve un poco más pesado y difícil de levantar. Cuando la Fed sube el costo del dinero, el impacto se siente de forma distinta según el tipo de activo que tengas.
+
+Aquí te explico cómo afecta a tus portafolios:
+
+1. Portafolio de Renta Fija (Bonos)
+La relación entre las tasas de interés y los precios de los bonos es inversamente proporcional.
+
+Retorno Esperado:
+
+Corto plazo: Verás una caída en el valor de mercado de tus bonos actuales. Esto sucede porque los bonos nuevos saldrán con cupones más altos, haciendo que tus bonos viejos (con tasas bajas) sean menos atractivos.
+
+Largo plazo: El retorno esperado sube. A medida que tus bonos vencen, puedes reinvertir ese capital en nuevos instrumentos que pagan intereses más altos.
+
+Volatilidad: Suele aumentar. La incertidumbre sobre qué tan alto llegará la Fed genera oscilaciones en los precios. Los bonos de larga duración (vencimientos lejanos) son mucho más volátiles que los de corta duración ante estos cambios.
+
+2. Portafolio de Renta Variable (Acciones)
+Aquí el efecto es más indirecto pero igualmente potente, actuando principalmente a través de la valoración de las empresas.
+
+Retorno Esperado: Generalmente disminuye o se vuelve más exigente por dos razones:
+
+Costo de Capital: A las empresas les sale más caro pedir prestado para expandirse, lo que reduce sus beneficios netos.
+
+Tasa de Descuento: Para valorar una acción, los analistas traen los flujos de caja futuros al presente usando una tasa de descuento. Si la tasa sube, el "valor presente" de esos flujos baja.
+
+Volatilidad: Aumenta significativamente. El mercado intenta adivinar si la Fed logrará un "aterrizaje suave" o si causará una recesión. Las acciones de crecimiento (growth), como las tecnológicas, suelen sufrir más que las de valor (value), ya que su valor depende de ganancias muy lejanas en el futuro.
+
+Resumen de Impactos
+
+Portafolio	Impacto en Precio (Inmediato)	Retorno a Largo Plazo	Volatilidad
+Renta Fija	Bajista (Caída de precios)	Alcista (Mayores cupones)	Moderada/Alta
+Renta Variable	Bajista (Menor valoración)	Depende del crecimiento real	Alta
+
+Nota importante: No todos los sectores sufren igual. Por ejemplo, el sector financiero suele beneficiarse de tasas más altas (mejores márgenes de préstamo), mientras que el sector inmobiliario o de servicios públicos (altamente endeudados) tiende a sufrir más.

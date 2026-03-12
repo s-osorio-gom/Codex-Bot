@@ -1,0 +1,5 @@
+dimension,summary,why_it_matters_for_bot
+Qué es Insights,Plataforma/app de inversión para abrir cuentas de inversión en EE.UU. con foco en clientes de América Latina.,"El bot debe hablar como una plataforma de inversión regulada, no como un banco comercial."
+Regulación y posicionamiento,"Insights comunica regulación SEC, FINRA y protección SIPC en sus materiales públicos.","El agente debe mantener tono sobrio, compliance-minded y evitar promesas excesivas."
+Timing ACH comunicado por Insights,Insights comunica que un depósito vía ACH/transferencia puede reflejarse en 1-5 días hábiles.,El bot debe fijar expectativas de disponibilidad y no prometer acreditación inmediata.
+Restricciones operativas relevantes,"Para retiros, Insights indica verificación de cuenta a nombre del titular y primer retiro con validación bancaria.","El bot debe confirmar ownership, nombre del titular y canal de escalamiento si hay inconsistencia."

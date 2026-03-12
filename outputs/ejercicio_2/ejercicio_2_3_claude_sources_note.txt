@@ -1,0 +1,10 @@
+No utilicé ninguna fuente externa para esa respuesta. Todo el contenido provino de mi conocimiento de entrenamiento sobre finanzas, teoría de portafolios y política monetaria — no realicé búsquedas web ni consulté documentos.
+
+Los conceptos que apliqué son estándar en la literatura financiera:
+
+Relación precio/tasa en bonos — principio fundamental de renta fija (presente en cualquier manual como Fabozzi o CFA Institute materials)
+Duración modificada — métrica estándar de sensibilidad de bonos
+Modelo DCF y tasa de descuento — valoración de acciones (Damodaran, entre otros)
+Efectos sectoriales — análisis macroeconómico convencional
+
+Si quieres, puedo hacer una búsqueda web para traerte fuentes académicas, reportes de bancos centrales o análisis institucionales (Fed, BIS, Goldman Sachs Research, etc.) que respalden cada punto con referencias citables. ¿Te interesa?

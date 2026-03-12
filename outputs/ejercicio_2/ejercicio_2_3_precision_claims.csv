@@ -1,0 +1,21 @@
+model,claim,score,note
+Gemini (Fast),La relación entre tasas y precios de bonos es inversa.,1.0,Correcta.
+Gemini (Fast),"En el corto plazo, una subida de tasas reduce el valor de mercado de bonos existentes.",1.0,Correcta.
+Gemini (Fast),"A largo plazo, la reinversión a mayores cupones puede elevar el retorno futuro esperado.",1.0,Correcta.
+Gemini (Fast),Los bonos de larga duración son más volátiles que los de corta duración ante cambios de tasas.,1.0,Correcta.
+Gemini (Fast),El retorno esperado de las acciones generalmente disminuye o se vuelve más exigente.,0.5,Parcialmente correcta; mezcla retorno esperado con retorno requerido.
+Gemini (Fast),Tasas más altas elevan el costo de capital y presionan beneficios netos.,1.0,Correcta.
+Gemini (Fast),Una tasa de descuento mayor reduce el valor presente de flujos futuros.,1.0,Correcta.
+Gemini (Fast),La incertidumbre sobre el aterrizaje suave o recesión puede aumentar la volatilidad accionaria.,1.0,Correcta.
+Gemini (Fast),Las acciones growth suelen sufrir más que las value.,1.0,Correcta como regularidad condicionada.
+Gemini (Fast),El sector financiero suele beneficiarse y utilities/real estate suelen sufrir más.,0.5,"Parcialmente correcta; depende de contexto, balance-sheet y etapa del ciclo."
+Claude Sonnet 4.6,"Cuando la tasa sube, el precio de los bonos existentes cae.",1.0,Correcta.
+Claude Sonnet 4.6,La magnitud del efecto depende críticamente de la duración modificada.,1.0,Correcta.
+Claude Sonnet 4.6,Un bono con duración de 7 años pierde aproximadamente 7% por un alza de 1 punto porcentual.,1.0,Aproximación estándar de duración modificada.
+Claude Sonnet 4.6,Bonos de corto plazo se mueven mucho menos que bonos de largo plazo ante subidas de tasas.,1.0,Correcta en términos generales.
+Claude Sonnet 4.6,La reinversión a mayores tasas mejora el retorno esperado futuro en renta fija.,1.0,Correcta.
+Claude Sonnet 4.6,Una tasa libre de riesgo más alta reduce el valor presente de los flujos futuros en DCF.,1.0,Correcta.
+Claude Sonnet 4.6,Las empresas growth/tech son más sensibles a la tasa de descuento.,1.0,Correcta.
+Claude Sonnet 4.6,Bancos y financieras tienden a beneficiarse por expansión del margen de interés neto.,1.0,Correcta como patrón general.
+Claude Sonnet 4.6,Utilities y REITs pueden sufrir por endeudamiento y competencia con bonos.,1.0,Correcta.
+Claude Sonnet 4.6,"Tasas más altas pueden enfriar consumo e inversión, presionando earnings y amplificando volatilidad.",1.0,Correcta.

@@ -1,0 +1,21 @@
+Ejercicio 2.1 - Formulacion matricial
+
+Sea R una matriz de retornos simulados de dimension [N x K] y P un vector de pesos [K x 1].
+
+1) Retorno del portafolio por escenario:
+   r_p = R P
+
+2) Retorno esperado del portafolio:
+   E[r_p] = (1/N) 1' R P = mu' P
+
+3) Varianza esperada del portafolio:
+   Var(r_p) = P' Sigma P
+
+4) Volatilidad esperada del portafolio:
+   sigma_p = sqrt(P' Sigma P)
+
+Donde:
+- mu es el vector de retornos esperados de los activos
+- Sigma es la matriz de covarianzas de los retornos de los activos
+
+Como los datos de R corresponden a retornos anuales simulados, no se aplica anualizacion adicional.

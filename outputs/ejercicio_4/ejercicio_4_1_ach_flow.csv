@@ -1,0 +1,6 @@
+step,actor,role,agent_implication
+1,Originator,Inicia la instrucción de débito o crédito ACH.,El cliente expresa intención de fondear la cuenta de inversión.
+2,ODFI,"El banco originador recibe la instrucción, la valida y la envía al operador ACH.",Insights o su partner de pagos necesita datos completos y autorización válida.
+3,ACH Network / Operator,"Clasifica, enruta y compensa el archivo ACH entre instituciones.",El bot debe explicar que ACH no es tiempo real; opera por ventanas/lotes.
+4,RDFI,El banco receptor recibe la instrucción y decide posteo/aceptación/retorno.,"Aquí se materializan retornos como R01, R02 o R03."
+5,Receiver,Titular final de la cuenta bancaria o cuenta de inversión que recibe el efecto económico.,El cliente necesita saber cuándo el dinero queda disponible para operar.

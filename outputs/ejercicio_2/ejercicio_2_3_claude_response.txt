@@ -1,0 +1,31 @@
+Una subida de tasas de la Fed afecta los dos tipos de portafolio de maneras bastante distintas, y en algunos aspectos opuestas. Aquí va un análisis completo:
+
+Renta fija: el efecto más mecánico
+La relación es directa e inmediata: cuando la tasa sube, el precio de los bonos existentes cae. Esto ocurre porque los nuevos bonos que se emiten pagan cupones más altos, haciendo menos atractivos (y por tanto más baratos) los bonos ya en circulación.
+
+La magnitud del golpe depende críticamente de la duración modificada:
+Un bono con duración de 7 años pierde aproximadamente 7% de su precio por cada punto porcentual de subida en tasas.
+Los bonos de corto plazo (1–2 años) apenas se mueven; los de largo plazo (10–30 años) pueden sufrir pérdidas de doble dígito.
+
+El lado positivo: las reinversiones de cupones y los nuevos bonos se hacen a tasas más altas, lo cual mejora el retorno esperado a futuro. En otras palabras, el dolor es en el presente, pero el portafolio se vuelve más rentable hacia adelante.
+
+Renta variable: canal más indirecto pero igualmente importante
+El mecanismo principal es la tasa de descuento en los modelos de valoración (DCF). Cuando la tasa libre de riesgo sube, el valor presente de los flujos futuros cae, lo cual reduce el precio teórico de las acciones.
+
+Esto no afecta a todos los sectores igual:
+Empresas de crecimiento (growth/tech): las más perjudicadas, porque sus flujos están muy lejanos en el tiempo y son muy sensibles a la tasa de descuento.
+Bancos y financieras: tienden a beneficiarse, pues su margen de interés neto se expande.
+Utilities y REITs: sufren por su alto endeudamiento y porque compiten directamente con bonos como instrumentos de renta.
+
+Adicionalmente, tasas más altas pueden enfriar el consumo y la inversión, lo que presiona los resultados corporativos y amplifica la volatilidad.
+
+El cuadro comparativo resumido
+Renta fija	Renta variable
+Impacto en retorno	Pérdida inmediata de capital	Presión bajista por valuación
+Dirección del efecto	Mecánico e inmediato	Indirecto, depende del ciclo
+Volatilidad	↑ (especialmente larga duración)	↑ (especialmente growth)
+Ganadores	Bonos cortos, bonos flotantes	Bancos, value, commodities
+Perdedores	Bonos largos, deuda emergente	Growth, tech, utilities, REITs
+Retorno futuro	Mejora (cupones más altos)	Incierto, depende de earnings
+
+En la práctica, un ciclo de subidas prolongado —como el de 2022–2023— puede generar pérdidas simultáneas en ambos portafolios, erosionando temporalmente el beneficio de la diversificación. Es en ese contexto donde cobran relevancia herramientas como bonos flotantes, TIPS (protegidos contra inflación), y acciones de sectores defensivos o cíclicos financieros.

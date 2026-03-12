@@ -1,0 +1,23 @@
+EJERCICIO 1 - MANEJO DE DATOS
+Prueba tecnica Insights
+Santiago Osorio Gomez
+
+Objetivo:
+Consultar el valor de los balances para un rango de fechas y segun tipo de portafolio,
+de los portafolios de los usuarios con asesor "person1@example.com".
+
+Secuencia de funciones:
+1. join(Portafolios, Usuarios, id_usuario, Usuarios_portafolios)
+2. drop(Usuarios_portafolios, email & perfil_riesgo)
+3. join(Usuarios_portafolios, Asesores, id_asesor, Usuarios_portafolios_asesores)
+4. filter(Usuarios_portafolios_asesores, email, "person1@example.com")
+5. drop(Usuarios_portafolios_asesores, num_clientes)
+6. join(Usuarios_portafolios_asesores, Balances, id_portafolio, Tabla_final)
+7. filter(Tabla_final, tipo_portafolio, "bonos")
+8. filter(Tabla_final, fecha, ["2022-10-01", "2022-10-31"])
+
+Nota metodologica:
+Las tablas del PDF son ilustrativas y presentan inconsistencias internas en sus llaves
+(id_asesor e id_portafolio no conectan literalmente entre tablas). Por eso, para ejecutar
+la logica completa en Python, se construyo una version demo consistente con ajustes
+minimos de llaves, manteniendo la estructura conceptual original del ejercicio.

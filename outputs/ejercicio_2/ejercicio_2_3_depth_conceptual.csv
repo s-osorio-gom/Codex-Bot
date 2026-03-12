@@ -1,0 +1,17 @@
+model,submetric,score,note
+Gemini (Fast),Distingue renta fija vs renta variable,1.0,Separación explícita en dos bloques.
+Gemini (Fast),Distingue retorno esperado vs volatilidad esperada,1.0,Ambos conceptos aparecen diferenciados.
+Gemini (Fast),Explica duración/sensibilidad a tasas en renta fija,0.5,"Menciona bonos de larga duración, pero sin desarrollar la sensibilidad de precio con precisión técnica."
+Gemini (Fast),Explica tasa de descuento/valuación en renta variable,1.0,Explica el efecto de la tasa de descuento sobre el valor presente.
+Gemini (Fast),Reconoce heterogeneidad por plazo/calidad/sector/estilo,1.0,Distingue por duración y por sectores/estilos.
+Gemini (Fast),Distingue corto plazo vs mediano/largo plazo,1.0,Separa explícitamente corto y largo plazo en renta fija.
+Gemini (Fast),Incorpora contexto macro,0.5,"Menciona aterrizaje suave/recesión, pero no integra inflación o credibilidad de la Fed."
+Gemini (Fast),Evita simplificaciones excesivas,0.5,"La respuesta es útil, pero el arranque metafórico y algunas formulaciones son simplificadoras."
+Claude Sonnet 4.6,Distingue renta fija vs renta variable,1.0,Separación muy clara entre ambos bloques.
+Claude Sonnet 4.6,Distingue retorno esperado vs volatilidad esperada,1.0,Diferencia efecto en retorno presente/futuro y en volatilidad.
+Claude Sonnet 4.6,Explica duración/sensibilidad a tasas en renta fija,1.0,Introduce duración modificada y ejemplo cuantitativo.
+Claude Sonnet 4.6,Explica tasa de descuento/valuación en renta variable,1.0,Explica el canal DCF con mayor precisión técnica.
+Claude Sonnet 4.6,Reconoce heterogeneidad por plazo/calidad/sector/estilo,1.0,"Distingue por plazo, estilos, sectores y tipos de instrumentos."
+Claude Sonnet 4.6,Distingue corto plazo vs mediano/largo plazo,1.0,Contrasta bonos cortos y largos explícitamente.
+Claude Sonnet 4.6,Incorpora contexto macro,0.5,"Integra ciclo 2022–2023 y enfriamiento de demanda, pero no desarrolla inflación/credibilidad."
+Claude Sonnet 4.6,Evita simplificaciones excesivas,1.0,Respuesta más técnica y con mayor densidad analítica.

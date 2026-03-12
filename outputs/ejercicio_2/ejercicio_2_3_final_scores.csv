@@ -1,0 +1,3 @@
+model,depth_score,precision_score,tone_score,structure_score,total_score
+Claude Sonnet 4.6,90.2083,100.0,94.8333,100.0,96.2875
+Gemini (Fast),83.9583,85.0,59.7917,95.0,82.9062

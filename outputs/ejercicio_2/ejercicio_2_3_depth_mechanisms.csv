@@ -1,0 +1,13 @@
+model,mechanism,present,note
+Gemini (Fast),Tasas ↑ → precio bonos ↓,1,Presente.
+Gemini (Fast),Mayor duración → mayor sensibilidad,1,"Presente, aunque no con terminología técnica completa."
+Gemini (Fast),Tasas ↑ → descuento ↑ → presión sobre valuaciones equity,1,Presente.
+Gemini (Fast),Tasas ↑ → costo de capital ↑,1,Presente.
+Gemini (Fast),Efectos distintos por sector/estilo,1,Presente.
+Gemini (Fast),Incertidumbre macro/política monetaria → volatilidad ↑,1,Presente.
+Claude Sonnet 4.6,Tasas ↑ → precio bonos ↓,1,Presente.
+Claude Sonnet 4.6,Mayor duración → mayor sensibilidad,1,Presente y mejor desarrollado.
+Claude Sonnet 4.6,Tasas ↑ → descuento ↑ → presión sobre valuaciones equity,1,Presente.
+Claude Sonnet 4.6,Tasas ↑ → costo de capital ↑,1,Presente.
+Claude Sonnet 4.6,Efectos distintos por sector/estilo,1,Presente.
+Claude Sonnet 4.6,Incertidumbre macro/política monetaria → volatilidad ↑,1,Presente.

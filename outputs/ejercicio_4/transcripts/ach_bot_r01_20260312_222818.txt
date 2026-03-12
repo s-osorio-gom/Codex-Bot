@@ -1,0 +1,39 @@
+ACH BOT TRANSCRIPT
+Scenario: r01
+Bank: Bank of America
+State: Texas
+Routing: 111000025
+Account type: checking
+Account holder: Santiago Osorio Gomez
+Account number: ****6789
+Amount: 2500.0
+Outcome code: R01
+
+Conversation history:
+[2026-03-12T22:27:24.702882+00:00] BOT (ask_bank): Hola. Soy el prototipo ACH Funding Bot de Insights. Te voy a ayudar a preparar un fondeo ACH de forma simple y paso a paso.
+[2026-03-12T22:27:24.703179+00:00] BOT (ask_bank): Primero, ¿cuál es tu banco?
+[2026-03-12T22:27:37.070851+00:00] USER (ask_bank): Bank of America
+[2026-03-12T22:27:37.070961+00:00] BOT (ask_state): ¿En qué estado abriste esa cuenta bancaria?
+[2026-03-12T22:27:40.668548+00:00] USER (ask_state): Texas
+[2026-03-12T22:27:40.671072+00:00] BOT (lookup_routing): Encontré un routing sugerido: 111000025. Coincidencia encontrada en seed lookup por banco y estado/región.
+[2026-03-12T22:27:40.671115+00:00] BOT (explain_ach): Perfecto. Para Bank of America en Texas, el routing sugerido en el lookup seed es 111000025.
+El proceso ACH funciona así: recopilamos tus datos bancarios, confirmamos la información, originamos la instrucción y el banco receptor puede aceptar o retornar la operación. En general, el fondeo ACH no es instantáneo y puede reflejarse en un rango de 1 a 5 días hábiles.
+[2026-03-12T22:27:40.671136+00:00] BOT (ask_account_type): ¿Tu cuenta es checking o savings?
+[2026-03-12T22:27:55.909505+00:00] USER (ask_account_type): checking
+[2026-03-12T22:27:55.909663+00:00] BOT (ask_account_holder): ¿Cuál es el nombre legal del titular de la cuenta bancaria?
+[2026-03-12T22:28:09.586098+00:00] USER (ask_account_holder): Santiago Osorio Gomez
+[2026-03-12T22:28:09.586234+00:00] BOT (ask_account_number): Ingresa el account number de la cuenta bancaria.
+[2026-03-12T22:28:14.151216+00:00] USER (ask_account_number): 123456789
+[2026-03-12T22:28:14.151485+00:00] BOT (ask_amount): ¿Qué monto quieres fondear por ACH en USD?
+[2026-03-12T22:28:16.841701+00:00] USER (ask_amount): 2500
+[2026-03-12T22:28:16.841868+00:00] BOT (confirm): Voy a confirmar los datos antes de enviar:
+- Banco: Bank of America
+- Estado: Texas
+- Routing sugerido: 111000025
+- Tipo de cuenta: checking
+- Titular: Santiago Osorio Gomez
+- Account number: ****6789
+- Monto: USD 2500.00
+¿Confirmas el envío? (si/no)
+[2026-03-12T22:28:18.962011+00:00] USER (confirm): si
+[2026-03-12T22:28:18.962230+00:00] BOT (submit): La operación fue retornada con código R01 (insufficient funds). La cuenta existe, pero no tenía fondos suficientes para completar el débito.

@@ -1,0 +1,4 @@
+scenario,outcome_label,bank,state_name,routing_number,account_type,masked_account_number,amount,outcome_code,total_turns,bot_turns,user_turns
+r01,R01 - Insufficient Funds,Bank of America,Texas,111000025,checking,****6789,2500.0,R01,18,11,7
+r03,R03 - No Account / Unable to Locate Account,Bank of America,Texas,111000025,checking,****6789,2500.0,R03,18,11,7
+success,Success,Bank of America,Texas,111000025,checking,****6789,2500.0,,18,11,7

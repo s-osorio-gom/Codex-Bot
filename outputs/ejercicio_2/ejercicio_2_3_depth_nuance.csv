@@ -1,0 +1,13 @@
+model,nuance,present,note
+Gemini (Fast),Depende del horizonte,1,Sí distingue corto y largo plazo.
+Gemini (Fast),Depende de si el mercado ya lo descontó,0,Ausente.
+Gemini (Fast),Depende de si la subida fue sorpresiva,0,Ausente.
+Gemini (Fast),Depende del tipo de bonos,1,Sí diferencia por larga duración.
+Gemini (Fast),Depende del sector accionario,1,Sí diferencia sectores.
+Gemini (Fast),Depende del contexto inflación-crecimiento,1,Menciona recesión/soft landing y crecimiento real.
+Claude Sonnet 4.6,Depende del horizonte,1,Sí diferencia impacto presente y retorno futuro.
+Claude Sonnet 4.6,Depende de si el mercado ya lo descontó,0,Ausente.
+Claude Sonnet 4.6,Depende de si la subida fue sorpresiva,0,Ausente.
+Claude Sonnet 4.6,Depende del tipo de bonos,1,"Sí distingue cortos, largos y flotantes."
+Claude Sonnet 4.6,Depende del sector accionario,1,"Sí distingue growth, bancos, utilities y REITs."
+Claude Sonnet 4.6,Depende del contexto inflación-crecimiento,1,"Integra ciclo económico, consumo e inversión."

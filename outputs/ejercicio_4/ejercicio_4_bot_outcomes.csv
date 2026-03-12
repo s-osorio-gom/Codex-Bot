@@ -1,0 +1,4 @@
+scenario,outcome_code,outcome_message,file_name
+r01,R01,"La operación fue retornada con código R01 (insufficient funds). La cuenta existe, pero no tenía fondos suficientes para completar el débito.",ach_bot_r01_20260312_222818.json
+r03,R03,La operación fue retornada con código R03 (no account / unable to locate account). No fue posible localizar la cuenta con los datos proporcionados.,ach_bot_r03_20260312_222903.json
+success,,Tu solicitud ACH fue creada correctamente por USD 2500.00. La referencia quedó en estado submitted y el fondeo puede reflejarse en 1 a 5 días hábiles.,ach_bot_success_20260312_222724.json

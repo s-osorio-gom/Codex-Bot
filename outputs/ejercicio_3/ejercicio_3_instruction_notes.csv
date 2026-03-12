@@ -1,0 +1,5 @@
+topic,instruction
+Destino reciente,Comparar destination_registry.last_changed_at contra account_snapshot.as_of.
+Review file,Debe contener solo solicitudes HOLD y estar ordenado por severity de mayor a menor.
+Prioridad lógica,REJECT domina sobre HOLD y APPROVE. HOLD solo aplica si la solicitud no cae en REJECT.
+Pending activity,"Se organiza como soporte analítico, pero no se usa directamente en las reglas explícitas del enunciado."

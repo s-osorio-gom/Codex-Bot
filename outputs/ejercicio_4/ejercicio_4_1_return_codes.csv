@@ -1,0 +1,4 @@
+code,meaning,plain_english,message_insights_style
+R01,Insufficient Funds,"La cuenta existe, pero no tenía fondos disponibles suficientes al momento del débito.",No pudimos completar tu fondeo ACH porque tu cuenta bancaria no tenía fondos suficientes. Intenta nuevamente con saldo disponible o usa otro método de fondeo.
+R02,Account Closed,La cuenta estaba cerrada al momento del intento.,No pudimos completar tu fondeo ACH porque la cuenta bancaria reportada aparece cerrada. Verifica tus datos o registra otra cuenta bancaria.
+R03,No Account / Unable to Locate Account,La cuenta no pudo localizarse o no coincide con la información del registro.,"No pudimos localizar la cuenta bancaria con la información proporcionada. Revisa routing number, account number y nombre del titular antes de intentar nuevamente."
