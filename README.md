@@ -1,6 +1,6 @@
 # Prueba técnica Insights
 **Santiago Osorio Gómez**  
-**Cédula:** [REDACTED-ID]
+**Cédula:** 1000.099.104
 
 ## Resumen
 Este repositorio contiene la solución desarrollada para la prueba técnica de **Analista Jr de Inversiones** de Insights.
