@@ -7,3 +7,6 @@ __pycache__/
 .DS_Store
 # Private assessment inputs are never committed
 data/
+# Local demo runs (the transcripts from the original submission stay tracked)
+out/
+outputs/ejercicio_4/transcripts/ach_bot_*
