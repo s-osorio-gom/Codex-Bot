@@ -15,11 +15,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - run: pip install -r requirements.txt pytest ruff
+      - run: pip install -r requirements-dev.txt
       - run: ruff check src tests
       - run: pytest -v
       - name: Smoke test the ACH bot CLI
         run: |
           printf 'Bank of America\nTexas\nchecking\nJane Doe\n123456789\n2500\nsi\n' \
             | python src/ach_bot.py --scenario success --output-dir "$RUNNER_TEMP/transcripts"
-          ! grep -r 123456789 "$RUNNER_TEMP/transcripts"
+          if grep -rq 123456789 "$RUNNER_TEMP/transcripts"; then
+            echo "Full account number leaked into a transcript"; exit 1
+          fi

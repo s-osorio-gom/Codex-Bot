@@ -1,9 +1,11 @@
 """Rule-based decision engine for withdrawal requests (Ejercicio 3).
 
 Classifies each request as APPROVE, HOLD or REJECT. When several rules fire,
-the one with the highest severity decides. The logic is the same as the one in
-notebooks/Ejercicio3.ipynb, extracted so it can be run and tested without
-Jupyter.
+the one with the highest severity decides. The rules are extracted from
+notebooks/Ejercicio3.ipynb so they can be run and tested without Jupyter; on the
+published inputs the output is identical to the notebook's (see tests). Flag
+parsing is stricter than the notebook: 1/0 and yes/no are understood, and any
+other unrecognised value raises instead of being silently treated as False.
 
 Usage:
     python src/withdrawal_engine.py --output-dir /tmp/ejercicio_3
@@ -93,6 +95,23 @@ OUTPUT_COLS = [
 
 DECISION_ORDER = {"REJECT": 0, "HOLD": 1, "APPROVE": 2}
 
+TRUE_VALUES = {"true", "1", "1.0", "yes", "y", "si", "sí"}
+FALSE_VALUES = {"false", "0", "0.0", "no", "n"}
+
+
+def parse_flag(series: pd.Series) -> pd.Series:
+    """Parse a boolean-like column; missing values stay missing, unknown values raise."""
+    if pd.api.types.is_bool_dtype(series):
+        return series
+    text = series.astype("string").str.strip().str.lower()
+    parsed = pd.Series(pd.NA, index=series.index, dtype="boolean")
+    parsed[text.isin(TRUE_VALUES).fillna(False)] = True
+    parsed[text.isin(FALSE_VALUES).fillna(False)] = False
+    unknown = series.notna() & parsed.isna() & text.ne("").fillna(False)
+    if unknown.any():
+        raise ValueError(f"Valores no reconocidos en {series.name}: {sorted(text[unknown].unique())}")
+    return parsed
+
 
 def normalize_types(base: pd.DataFrame) -> pd.DataFrame:
     base = base.copy()
@@ -100,9 +119,8 @@ def normalize_types(base: pd.DataFrame) -> pd.DataFrame:
         if col in base.columns:
             base[col] = pd.to_datetime(base[col], errors="coerce", utc=True)
     for col in BOOL_COLS:
-        # Text flags ("True"/"False") arrive as object (pandas 2) or str (pandas 3).
-        if col in base.columns and not pd.api.types.is_bool_dtype(base[col]):
-            base[col] = base[col].astype(str).str.strip().str.lower().map({"true": True, "false": False})
+        if col in base.columns:
+            base[col] = parse_flag(base[col])
     for col in NUMERIC_COLS:
         if col in base.columns:
             base[col] = pd.to_numeric(base[col], errors="coerce")
@@ -168,6 +186,8 @@ def run_engine(base: pd.DataFrame, rules: Dict[str, float], severity: Dict[str, 
     decisions = pd.DataFrame(
         [decide([code for code in ordered_codes if row[code]], severity) for _, row in flags.iterrows()],
         index=base.index,
+        # Explicit columns so an empty batch still yields the expected schema.
+        columns=["decision", "reason_code", "severity", "triggered_rules"],
     )
     decisions["severity"] = pd.to_numeric(decisions["severity"])
 
@@ -199,12 +219,21 @@ def run_engine(base: pd.DataFrame, rules: Dict[str, float], severity: Dict[str, 
         .reset_index(drop=True)
     )
 
+    decision_summary = (
+        final.groupby(["decision", "reason_code"], dropna=False, as_index=False)
+        .size()
+        .rename(columns={"size": "request_count"})
+        .sort_values(["decision", "request_count", "reason_code"], ascending=[True, False, True])
+        .reset_index(drop=True)
+    )
+
     decision_counts = final["decision"].value_counts().rename_axis("decision").reset_index(name="request_count")
 
     return {
         "final_decisions": final,
         "review_queue": review_queue,
         "rule_hits": rule_hits,
+        "decision_summary": decision_summary,
         "decision_counts": decision_counts,
     }
 

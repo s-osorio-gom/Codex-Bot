@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from withdrawal_engine import EJ3_DIR, decide, load_inputs, main, run_engine
+from withdrawal_engine import EJ3_DIR, decide, load_inputs, main, parse_flag, run_engine
 
 SEVERITY = {"KYC_NOT_VERIFIED": 100, "DUPLICATE_REQUEST": 70, "URGENT_RISK_TIER": 35}
 
@@ -69,6 +69,9 @@ def _request(**overrides):
         ({"settled_cash_after_request": 49.99}, "HOLD", "INSUFFICIENT_SETTLED_AFTER_BUFFER"),
         ({"settled_cash_after_request": 50.0}, "APPROVE", None),
         ({"dest_changed_recently_flag": "True"}, "HOLD", "DEST_CHANGED_RECENTLY"),
+        ({"urgent_risk_flag": 1}, "HOLD", "URGENT_RISK_TIER"),
+        ({"snapshot_aml_risk_tier": "high", "dest_is_whitelisted": 1}, "APPROVE", None),
+        ({"snapshot_aml_risk_tier": "high", "dest_is_whitelisted": None}, "REJECT", "UNWHITELISTED_HIGH_AML"),
     ],
 )
 def test_rules_on_synthetic_requests(overrides, decision, reason):
@@ -78,7 +81,9 @@ def test_rules_on_synthetic_requests(overrides, decision, reason):
     assert (pd.isna(out["reason_code"]) and reason is None) or out["reason_code"] == reason
 
 
-@pytest.mark.parametrize("name", ["final_decisions", "review_queue", "rule_hits", "decision_counts"])
+@pytest.mark.parametrize(
+    "name", ["final_decisions", "review_queue", "rule_hits", "decision_summary", "decision_counts"]
+)
 def test_reproduces_published_outputs(tmp_path, name):
     """Regression guard: the module must reproduce the notebook's published results exactly."""
     main(["--output-dir", str(tmp_path)])
@@ -91,3 +96,19 @@ def test_review_queue_only_holds_sorted_by_severity():
     queue = run_engine(*load_inputs())["review_queue"]
     assert queue["decision"].eq("HOLD").all()
     assert queue["severity"].is_monotonic_decreasing
+
+
+def test_empty_batch_returns_empty_outputs():
+    base, rules, severity = load_inputs()
+    out = run_engine(base.iloc[0:0], rules, severity)
+    assert out["final_decisions"].empty
+    assert out["review_queue"].empty
+    assert out["rule_hits"]["hit_count"].eq(0).all()
+
+
+def test_parse_flag_accepts_common_encodings_and_rejects_garbage():
+    parsed = parse_flag(pd.Series(["True", " false ", "1", "0", 1, 0, "yes", None, ""], name="f", dtype=object))
+    assert parsed.tolist()[:7] == [True, False, True, False, True, False, True]
+    assert parsed.isna().tolist()[7:] == [True, True]
+    with pytest.raises(ValueError, match="maybe"):
+        parse_flag(pd.Series(["maybe"], name="f"))

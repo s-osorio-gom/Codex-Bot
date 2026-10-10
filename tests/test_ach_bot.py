@@ -67,6 +67,10 @@ def test_validators():
     assert validate_amount("abc") is None
     assert validate_amount("nan") is None
     assert validate_amount("inf") is None
+    assert validate_amount("1e400") is None
+    assert validate_amount("0.001") is None  # rounds to 0.00
+    assert validate_amount("2,5") is None  # ambiguous decimal comma, not 25
+    assert validate_amount("2,500.00") == 2500.0
 
 
 @pytest.mark.parametrize("scenario, code", [("success", None), ("r01", "R01"), ("r03", "R03")])
@@ -97,9 +101,45 @@ def test_full_conversation_writes_masked_transcripts(tmp_path, scenario, code):
 
 
 def test_invalid_answers_are_reprompted(tmp_path):
-    answers = ["Unknown Bank", "Texas", *HAPPY_PATH[:2], "brokerage", *HAPPY_PATH[2:5], "-5", "2500", "no"]
+    answers = [
+        "Unknown Bank", "Texas",          # no routing match -> back to bank
+        "Bank of America", "Texas",
+        "brokerage", "savings",           # invalid then valid account type
+        "", "Jane Doe",                   # empty holder
+        "12", "987654321",                # too-short account number
+        "-5", "2,5", "2500",              # invalid amounts
+        "no",
+    ]
     session = run_bot("success", input_fn=scripted(answers), output_fn=lambda _m: None, output_dir=tmp_path)
 
+    assert session.account_type == "savings"
+    assert session.account_holder_name == "Jane Doe"
+    assert session.masked_account_number == "****4321"
     assert session.amount == 2500.0
+    bot_messages = [t.message for t in session.history if t.speaker == "bot"]
+    for expected in [
+        "No encontré una coincidencia",
+        "Respuesta no válida",
+        "Necesito el nombre del titular",
+        "al menos 4 dígitos",
+        "El monto debe ser un número positivo",
+    ]:
+        assert any(expected in m for m in bot_messages), expected
+    assert sum("El monto debe ser" in m for m in bot_messages) == 2
     # Declining the confirmation ends the session without submitting.
     assert session.outcome_code is None and session.outcome_message is None
+
+
+def test_eof_ends_session_and_still_saves_transcript(tmp_path):
+    answers = iter(["Bank of America", "Texas"])
+
+    def eof_after_two(_prompt):
+        try:
+            return next(answers)
+        except StopIteration:
+            raise EOFError from None
+
+    session = run_bot("success", input_fn=eof_after_two, output_fn=lambda _m: None, output_dir=tmp_path)
+    assert session.outcome_code is None
+    assert "interrumpida" in session.history[-1].message
+    assert len(list(tmp_path.glob("*.json"))) == 1

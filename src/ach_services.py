@@ -1,4 +1,5 @@
 import json
+import re
 from datetime import datetime, timezone
 from decimal import ROUND_HALF_UP, Decimal, InvalidOperation
 from pathlib import Path
@@ -132,16 +133,26 @@ def clean_account_number(value: str) -> Optional[str]:
     return digits
 
 
+THOUSANDS_RE = re.compile(r"^\d{1,3}(,\d{3})+(\.\d+)?$")
+
+
 def validate_amount(value: str) -> Optional[float]:
+    text = str(value).strip()
+    if "," in text:
+        # Solo se aceptan comas como separador de miles ("2,500.00"). "2,5" es
+        # ambiguo (en español significa 2.5) y se rechaza en lugar de leerlo como 25.
+        if not THOUSANDS_RE.match(text):
+            return None
+        text = text.replace(",", "")
     try:
-        amount = Decimal(str(value).replace(",", "").strip())
+        # Decimal evita errores de redondeo binario (round(2500.555, 2) == 2500.55).
+        # quantize lanza InvalidOperation con montos absurdos (p. ej. 1e400).
+        amount = Decimal(text).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
     except InvalidOperation:
         return None
-
     if not amount.is_finite() or amount <= 0:
         return None
-    # Decimal evita errores de redondeo binario (round(2500.555, 2) == 2500.55).
-    return float(amount.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
+    return float(amount)
 
 
 def simulate_submission(scenario: str, session: SessionState) -> Dict[str, Optional[str]]:
