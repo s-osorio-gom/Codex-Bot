@@ -1,28 +1,16 @@
 import json
 from datetime import datetime, timezone
+from decimal import ROUND_HALF_UP, Decimal, InvalidOperation
 from pathlib import Path
-from typing import Dict, Optional, Any
+from typing import Any, Dict, Optional
 
 import pandas as pd
 
 from ach_state import SessionState
 
-
-def find_project_root() -> Path:
-    cwd = Path.cwd().resolve()
-    candidates = [cwd, *cwd.parents]
-    required_dirs = {"data", "docs", "notebooks", "outputs", "src"}
-
-    for candidate in candidates:
-        if candidate.exists():
-            dir_names = {p.name for p in candidate.iterdir() if p.is_dir()}
-            if required_dirs.issubset(dir_names):
-                return candidate
-
-    raise FileNotFoundError(
-        "No se encontró la raíz del proyecto. "
-        "Ejecuta el script dentro de ~/Documents/prueba_insights"
-    )
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+ROUTING_SEED_PATH = PROJECT_ROOT / "outputs" / "ejercicio_4" / "ejercicio_4_1_routing_lookup_seed.csv"
+TRANSCRIPTS_DIR = PROJECT_ROOT / "outputs" / "ejercicio_4" / "transcripts"
 
 
 def normalize_text(text: str) -> str:
@@ -30,28 +18,18 @@ def normalize_text(text: str) -> str:
     return " ".join(cleaned.split())
 
 
-def load_routing_lookup() -> pd.DataFrame:
-    root = find_project_root()
-    candidate_paths = [
-        root / "data" / "routing_lookup_seed.csv",
-        root / "outputs" / "ejercicio_4" / "ejercicio_4_1_routing_lookup_seed.csv",
-    ]
-
-    existing = [p for p in candidate_paths if p.exists()]
-    if not existing:
-        raise FileNotFoundError(
-            "No encontré el archivo de routing lookup. "
-            "Esperado en data/routing_lookup_seed.csv o "
-            "outputs/ejercicio_4/ejercicio_4_1_routing_lookup_seed.csv"
-        )
+def load_routing_lookup(path: Optional[Path] = None) -> pd.DataFrame:
+    path = Path(path) if path is not None else ROUTING_SEED_PATH
+    if not path.exists():
+        raise FileNotFoundError(f"No encontré el archivo de routing lookup: {path}")
 
     # IMPORTANTE:
     # routing_number debe leerse como texto para no perder ceros a la izquierda
-    routing_df = pd.read_csv(existing[0], dtype={"routing_number": "string"})
+    routing_df = pd.read_csv(path, dtype={"routing_number": "string"})
     routing_df["routing_number"] = (
         routing_df["routing_number"]
         .astype(str)
-        .str.replace(".0", "", regex=False)
+        .str.replace(r"\.0$", "", regex=True)
         .str.strip()
         .str.zfill(9)
     )
@@ -61,19 +39,19 @@ def load_routing_lookup() -> pd.DataFrame:
 
 
 def _state_matches(user_state: str, row_region: str) -> bool:
-    user_state_norm = normalize_text(user_state)
-    row_region_norm = normalize_text(row_region)
+    # Comparación por palabras completas: "California" coincide con
+    # "California - North", pero "ca" ya no coincide con cualquier región
+    # que contenga esas letras.
+    user_tokens = set(normalize_text(user_state).split())
+    region_tokens = set(normalize_text(row_region).split())
 
-    if user_state_norm == row_region_norm:
+    if not user_tokens:
+        return False
+
+    if user_tokens <= region_tokens:
         return True
 
-    if user_state_norm in row_region_norm:
-        return True
-
-    if "nationwide" in row_region_norm or "general" in row_region_norm or "online" in row_region_norm:
-        return True
-
-    return False
+    return bool(region_tokens & {"nationwide", "general", "online"})
 
 
 def lookup_routing(bank: str, state_name: str, routing_df: pd.DataFrame) -> Dict[str, Optional[str]]:
@@ -95,6 +73,10 @@ def lookup_routing(bank: str, state_name: str, routing_df: pd.DataFrame) -> Dict
             "match_note": "Coincidencia encontrada en seed lookup por banco y estado/región.",
         }
 
+    if len(bank_norm) < 3:
+        # Evita que entradas como "a" coincidan parcialmente con cualquier banco.
+        return _not_found()
+
     partial_matches = routing_df[
         (routing_df["bank_norm"].str.contains(bank_norm, regex=False))
         & (routing_df["region_norm"].map(lambda x: _state_matches(state_norm, x)))
@@ -107,9 +89,15 @@ def lookup_routing(bank: str, state_name: str, routing_df: pd.DataFrame) -> Dict
             "bank": str(row["bank"]),
             "state_or_region": str(row["state_or_region"]),
             "routing_number": str(row["routing_number"]),
-            "match_note": "Coincidencia parcial encontrada en seed lookup; conviene confirmación visual en app o cheque.",
+            "match_note": (
+                "Coincidencia parcial encontrada en seed lookup; conviene confirmación visual en app o cheque."
+            ),
         }
 
+    return _not_found()
+
+
+def _not_found() -> Dict[str, Optional[str]]:
     return {
         "found": False,
         "bank": None,
@@ -146,13 +134,14 @@ def clean_account_number(value: str) -> Optional[str]:
 
 def validate_amount(value: str) -> Optional[float]:
     try:
-        amount = float(str(value).replace(",", "").strip())
-    except ValueError:
+        amount = Decimal(str(value).replace(",", "").strip())
+    except InvalidOperation:
         return None
 
-    if amount <= 0:
+    if not amount.is_finite() or amount <= 0:
         return None
-    return round(amount, 2)
+    # Decimal evita errores de redondeo binario (round(2500.555, 2) == 2500.55).
+    return float(amount.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
 
 
 def simulate_submission(scenario: str, session: SessionState) -> Dict[str, Optional[str]]:
@@ -234,9 +223,8 @@ def _to_json_safe(obj: Any):
     return obj
 
 
-def save_session_artifacts(session: SessionState) -> Dict[str, Path]:
-    root = find_project_root()
-    out_dir = root / "outputs" / "ejercicio_4" / "transcripts"
+def save_session_artifacts(session: SessionState, out_dir: Optional[Path] = None) -> Dict[str, Path]:
+    out_dir = Path(out_dir) if out_dir is not None else TRANSCRIPTS_DIR
     out_dir.mkdir(parents=True, exist_ok=True)
 
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")

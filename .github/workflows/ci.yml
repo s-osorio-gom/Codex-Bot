@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -r requirements.txt pytest ruff
+      - run: ruff check src tests
+      - run: pytest -v
+      - name: Smoke test the ACH bot CLI
+        run: |
+          printf 'Bank of America\nTexas\nchecking\nJane Doe\n123456789\n2500\nsi\n' \
+            | python src/ach_bot.py --scenario success --output-dir "$RUNNER_TEMP/transcripts"
+          ! grep -r 123456789 "$RUNNER_TEMP/transcripts"

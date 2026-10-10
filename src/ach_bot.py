@@ -1,6 +1,7 @@
 import argparse
+from pathlib import Path
+from typing import Callable, Optional
 
-from ach_state import BotState, SessionState
 from ach_services import (
     clean_account_number,
     explain_ach,
@@ -11,22 +12,35 @@ from ach_services import (
     validate_account_type,
     validate_amount,
 )
+from ach_state import BotState, SessionState
+
+InputFn = Callable[[str], str]
+OutputFn = Callable[[str], None]
 
 
-def bot_say(session: SessionState, message: str) -> None:
-    print(f"\nBot: {message}")
-    session.add_turn("bot", message)
+def mask_digits(value: str) -> str:
+    digits = "".join(ch for ch in value if ch.isdigit())
+    return f"****{digits[-4:]}" if digits else ""
 
 
-def user_reply(session: SessionState, prompt: str = "> ") -> str:
-    response = input(prompt).strip()
-    session.add_turn("user", response)
-    return response
-
-
-def run_bot(scenario: str) -> None:
+def run_bot(
+    scenario: str,
+    input_fn: InputFn = input,
+    output_fn: OutputFn = print,
+    output_dir: Optional[Path] = None,
+) -> SessionState:
     routing_df = load_routing_lookup()
     session = SessionState(scenario=scenario)
+
+    def bot_say(session: SessionState, message: str) -> None:
+        output_fn(f"\nBot: {message}")
+        session.add_turn("bot", message)
+
+    def user_reply(session: SessionState, prompt: str = "> ", sensitive: bool = False) -> str:
+        response = input_fn(prompt).strip()
+        # Los datos sensibles se guardan enmascarados en el historial.
+        session.add_turn("user", mask_digits(response) if sensitive else response)
+        return response
 
     bot_say(
         session,
@@ -99,7 +113,7 @@ def run_bot(scenario: str) -> None:
 
         elif session.current_state == BotState.ASK_ACCOUNT_NUMBER:
             bot_say(session, "Ingresa el account number de la cuenta bancaria.")
-            account_number_raw = user_reply(session)
+            account_number_raw = user_reply(session, sensitive=True)
             account_number = clean_account_number(account_number_raw)
             if not account_number:
                 bot_say(session, "El account number debe tener al menos 4 dígitos.")
@@ -135,7 +149,10 @@ def run_bot(scenario: str) -> None:
             if answer in {"si", "sí", "s", "yes", "y"}:
                 session.current_state = BotState.SUBMIT
             else:
-                bot_say(session, "Entendido. No enviaré la solicitud. Puedes reiniciar el bot si deseas corregir los datos.")
+                bot_say(
+                    session,
+                    "Entendido. No enviaré la solicitud. Puedes reiniciar el bot si deseas corregir los datos.",
+                )
                 session.current_state = BotState.END
 
         elif session.current_state == BotState.SUBMIT:
@@ -145,10 +162,11 @@ def run_bot(scenario: str) -> None:
             bot_say(session, outcome["message"])
             session.current_state = BotState.END
 
-    paths = save_session_artifacts(session)
-    print("\nArchivos de transcript generados:")
-    print(f"- {paths['json']}")
-    print(f"- {paths['txt']}")
+    paths = save_session_artifacts(session, output_dir)
+    output_fn("\nArchivos de transcript generados:")
+    output_fn(f"- {paths['json']}")
+    output_fn(f"- {paths['txt']}")
+    return session
 
 
 def main():
@@ -159,8 +177,14 @@ def main():
         choices=["success", "r01", "r03"],
         help="Escenario de simulación del resultado final.",
     )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=None,
+        help="Carpeta donde guardar los transcripts (por defecto outputs/ejercicio_4/transcripts).",
+    )
     args = parser.parse_args()
-    run_bot(args.scenario)
+    run_bot(args.scenario, output_dir=args.output_dir)
 
 
 if __name__ == "__main__":

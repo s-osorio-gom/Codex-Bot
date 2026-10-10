@@ -1,0 +1,2 @@
+# Runtime dependencies for src/ (ACH bot and withdrawal engine)
+pandas>=2.1,<4
