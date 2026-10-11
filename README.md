@@ -154,4 +154,6 @@ Makefile                 Shortcuts: setup, check, engine, bot
 
 ## License
 
-No license has been chosen yet, so all rights are reserved by default. A license will be added once it is confirmed which parts of the assessment material may be redistributed.
+- **Code** (`src/`, `tests/`, the code cells in `notebooks/`, `Makefile`, CI configuration): [MIT](LICENSE), © 2026 s-osorio-gom.
+- **Written material and results** (`docs/`, `outputs/`, notebook text): [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). You may reuse them with attribution.
+- **Data:** the client, adviser, account, e-mail and transaction records in this repository are simulated and do not describe real people; e-mail addresses use reserved example domains. The original assessment input files (`data/`) are not included and are not covered by these licenses.
