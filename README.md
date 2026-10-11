@@ -135,7 +135,7 @@ Makefile                 Shortcuts: setup, check, engine, bot
 
 ## Provenance: original submission vs. later improvements
 
-- **Original submission** (12 March 2026): everything up to commit [`7b06f84`](https://github.com/s-osorio-gom/prueba-analista-jr-insights-santiago-osorio/tree/7b06f84). This is the notebooks, `docs/`, `outputs/` and the first version of the ACH bot. I have left the notebooks, docs and outputs unchanged so the evaluated work stays as submitted.
+- **Original submission** (12 March 2026): everything up to commit [`c5963d6`](https://github.com/s-osorio-gom/prueba-analista-jr-insights-santiago-osorio/tree/c5963d6). This is the notebooks, `docs/`, `outputs/` and the first version of the ACH bot. I have left the notebooks, docs and outputs unchanged so the evaluated work stays as submitted, with one exception: on 11 October 2026 the whole history was cleaned of personal data. An ID number, e-mail addresses and a local user path were replaced with placeholders in every commit. Messages, authors and dates were kept.
 - **Later improvements** (after the assessment, not part of what was evaluated):
   - Extracted the Exercise 3 engine from the notebook into `src/withdrawal_engine.py`, with a regression test that it reproduces the submitted results exactly.
   - Fixed the ACH bot so it runs from a fresh clone. It previously looked for a local `data/` folder that was never committed.
