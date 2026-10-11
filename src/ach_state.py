@@ -1,7 +1,7 @@
-from dataclasses import dataclass, field, asdict
-from enum import Enum
+from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
-from typing import Optional, List
+from enum import Enum
+from typing import List, Optional
 
 
 class BotState(str, Enum):
@@ -61,4 +61,6 @@ class SessionState:
     def to_dict(self):
         data = asdict(self)
         data["current_state"] = self.current_state.value
+        # Nunca persistir el número de cuenta completo en los artefactos.
+        data["account_number"] = self.masked_account_number
         return data

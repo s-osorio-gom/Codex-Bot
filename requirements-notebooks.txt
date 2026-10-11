@@ -1,0 +1,5 @@
+# Only needed to open/re-run the original notebooks (they also need the private assessment inputs)
+-r requirements.txt
+jupyterlab>=4
+openpyxl>=3.1
+numpy>=1.26
